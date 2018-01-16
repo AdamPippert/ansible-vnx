@@ -29,7 +29,9 @@ def getNaviseccliCommand(nscli,user,password,spa,spb):
 #    if re.search('Fault', out):
 #        module.fail_json(msg='FAILED Disk Check ' + cmd + ' ' + out)
 ## Insert function for map of hosts here
-        
+
+def hostMap():
+    (rc, out, err) = runCommand('-h %s getarrayuid -all' % (naviseccli))        
 
 def main():
     ### Parse Arguments
@@ -54,7 +56,9 @@ def main():
     naviseccli = getNaviseccliCommand(nscli,user,password,spa,spb)
 
     ### Check Disk
-    checkDisk()
+#     checkDisk()
+
+    hostMap()
 
     res_args = dict(
         changed = False
